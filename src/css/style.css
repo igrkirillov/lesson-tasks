@@ -6,9 +6,15 @@ body {
 }
 
 .task-input {
+    position: relative;
     font-size: 16pt;
     max-width: 300px;
     box-sizing: border-box;
+}
+
+.error-empty:before {
+    content:"Обязательное поле для ввода";
+    color: red;
 }
 
 .tasks {
