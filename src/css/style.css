@@ -1,0 +1,73 @@
+body {
+}
+
+.title {
+    text-align: center;
+}
+
+.task-input {
+    font-size: 16pt;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.tasks {
+    max-width: 300px;
+    margin: auto;
+}
+
+.pinned-title {
+    display: block;
+}
+
+.all-title {
+    display: block;
+}
+
+.task {
+    color: black;
+    font-size: 14pt;
+    border: #999 solid 1px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.task label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pinned-flag:after {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -4px;
+    border: black solid 1px;
+    content: "";
+    border-radius: 50%;
+}
+
+.checked:before {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -1px;
+    left: 7px;
+    content: "V";
+}
+
+.pinned-flag {
+}
+
+.hidden {
+    position: relative;
+    height: 0px;
+    border: 0;
+    clip: rect(0 0 0 0);
+}
+
+.displayNone {
+    display: none;
+}
