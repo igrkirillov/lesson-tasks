@@ -17,10 +17,10 @@ export default class TaskInputWidget {
   }
 
   onKeyDown(event) {
-    this.clearErrorEmpty();
+    this.clearEmptyError();
     if (event.key === "Enter") {
       if (this.isFieldEmpty()) {
-        this.setErrorEmpty();
+        this.setEmptyError();
         return;
       }
       this.tasksWidget.addNewTask(this.element.value);
@@ -35,16 +35,16 @@ export default class TaskInputWidget {
     return !this.element.value;
   }
 
-  setErrorEmpty() {
+  setEmptyError() {
     this.element.closest("label").classList.add("error-empty");
   }
 
-  clearErrorEmpty() {
+  clearEmptyError() {
     this.element.closest("label").classList.remove("error-empty");
   }
 
   onInput(event) {
-    this.clearErrorEmpty();
+    this.clearEmptyError();
     this.filterExecutor.execFilter(this.element.value);
   }
 
