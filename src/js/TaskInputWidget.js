@@ -3,7 +3,7 @@ import FilterExecutor from "./FilterExecutor";
 export default class TaskInputWidget {
   constructor(tasksWidget, element) {
     this.tasksWidget = tasksWidget;
-    if (typeof element === 'string') {
+    if (typeof element === "string") {
       element = document.querySelector(element);
     }
     this.element = element;

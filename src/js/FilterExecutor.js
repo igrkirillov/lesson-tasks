@@ -10,5 +10,4 @@ export default class FilterExecutor {
       this.tasksWidget.filter(text);
     }, 300);
   }
-
 }

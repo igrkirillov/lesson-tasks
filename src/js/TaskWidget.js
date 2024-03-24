@@ -2,7 +2,7 @@ export default class TaskWidget {
   constructor(tasksWidget, task, element) {
     this.tasksWidget = tasksWidget;
     this.task = task;
-    if (typeof element === 'string') {
+    if (typeof element === "string") {
       element = document.querySelector(element);
     }
     this.element = element;

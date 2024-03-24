@@ -5,15 +5,24 @@ import NoTasksWidget from "./NoTasksWidget";
 
 export default class TasksWidget {
   constructor(element) {
-    if (typeof element === 'string') {
+    if (typeof element === "string") {
       element = document.querySelector(element);
     }
     this.element = element;
     this.pinnedPanel = element.querySelector(".pinned-panel");
     this.allPanel = element.querySelector(".all-panel");
-    this.taskInputWidget = new TaskInputWidget(this, element.querySelector(".task-input"));
-    this.noPinnedTasksWidget = new NoTasksWidget(this, element.querySelector(".pinned-panel .no-pinned-tasks"));
-    this.noTasksFoundWidget = new NoTasksWidget(this, element.querySelector(".all-panel .no-tasks-found"));
+    this.taskInputWidget = new TaskInputWidget(
+      this,
+      element.querySelector(".task-input")
+    );
+    this.noPinnedTasksWidget = new NoTasksWidget(
+      this,
+      element.querySelector(".pinned-panel .no-pinned-tasks")
+    );
+    this.noTasksFoundWidget = new NoTasksWidget(
+      this,
+      element.querySelector(".all-panel .no-tasks-found")
+    );
     this.taskWidgets = [];
     this.updateVisibilityNoTasksWidget();
   }
@@ -29,11 +38,12 @@ export default class TasksWidget {
   createTaskElement(task) {
     const element = document.createElement("div");
     element.classList.add("task");
-    element.innerHTML =
-        `<label>
+    element.innerHTML = `<label>
             ${task.name}
-            <input class=\"pinned-flag hidden ${task.pinnedFlag ? "checked" : ""} \" 
-                type=\"checkbox\" ${task.pinnedFlag ? "checked" : ""}/>
+            <input class="pinned-flag hidden ${
+              task.pinnedFlag ? "checked" : ""
+            }" 
+                type="checkbox" ${task.pinnedFlag ? "checked" : ""}/>
          </label>
          `;
     if (task.pinnedFlag) {
@@ -45,26 +55,26 @@ export default class TasksWidget {
   }
 
   moveToPinned(task) {
-    const taskWidget = this.taskWidgets.find(el => el.task === task);
+    const taskWidget = this.taskWidgets.find((el) => el.task === task);
     this.allPanel.removeChild(taskWidget.element);
     this.pinnedPanel.appendChild(taskWidget.element);
     this.updateVisibilityNoTasksWidget();
   }
 
   moveToAll(task) {
-    const taskWidget = this.taskWidgets.find(el => el.task === task);
+    const taskWidget = this.taskWidgets.find((el) => el.task === task);
     this.pinnedPanel.removeChild(taskWidget.element);
     this.allPanel.appendChild(taskWidget.element);
     this.updateVisibilityNoTasksWidget();
   }
 
   updateVisibilityNoTasksWidget() {
-    if (this.taskWidgets.find(tw => tw.task.pinnedFlag)) {
+    if (this.taskWidgets.find((tw) => tw.task.pinnedFlag)) {
       this.noPinnedTasksWidget.hide();
     } else {
       this.noPinnedTasksWidget.show();
     }
-    if (this.taskWidgets.find(tw => !tw.task.pinnedFlag)) {
+    if (this.taskWidgets.find((tw) => !tw.task.pinnedFlag)) {
       this.noTasksFoundWidget.hide();
     } else {
       this.noTasksFoundWidget.show();
@@ -75,7 +85,8 @@ export default class TasksWidget {
     const lowerCasedText = text ? text.toLowerCase().trim() : "";
     for (const tw of this.taskWidgets) {
       console.log(lowerCasedText);
-      const matched = !text || tw.task.name.toLowerCase().startsWith(lowerCasedText);
+      const matched =
+        !text || tw.task.name.toLowerCase().startsWith(lowerCasedText);
       if (matched) {
         tw.show();
       } else {
