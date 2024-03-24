@@ -38,14 +38,12 @@ export default class TasksWidget {
   createTaskElement(task) {
     const element = document.createElement("div");
     element.classList.add("task");
-    element.innerHTML = `<label>
+    element.innerHTML =
+      `<label>
             ${task.name}
-            <input class="pinned-flag hidden ${
-              task.pinnedFlag ? "checked" : ""
-            }" 
-                type="checkbox" ${task.pinnedFlag ? "checked" : ""}/>
-         </label>
-         `;
+            <input class="pinned-flag hidden ${task.pinnedFlag ? "checked" : ""}" type="checkbox" 
+                ${task.pinnedFlag ? "checked" : ""}/>
+       </label>`;
     if (task.pinnedFlag) {
       this.pinnedPanel.appendChild(element);
     } else {
