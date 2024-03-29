@@ -2,6 +2,7 @@ import Task from "./Task";
 import TaskWidget from "./TaskWidget";
 import TaskInputWidget from "./TaskInputWidget";
 import NoTasksWidget from "./NoTasksWidget";
+import escapeHtml from 'escape-html'
 
 export default class TasksWidget {
   constructor(element) {
@@ -40,7 +41,7 @@ export default class TasksWidget {
     element.classList.add("task");
     element.innerHTML =
       `<label>
-            ${task.name}
+            ${escapeHtml(task.name)}
             <input class="pinned-flag hidden ${task.pinnedFlag ? "checked" : ""}" type="checkbox" 
                 ${task.pinnedFlag ? "checked" : ""}/>
        </label>`;
